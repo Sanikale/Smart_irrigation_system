@@ -4,6 +4,7 @@ Minimal full-stack web application for the Smart Irrigation System.
 
 from __future__ import annotations
 
+import os
 import json
 import mimetypes
 from http import HTTPStatus
@@ -118,14 +119,14 @@ class SmartIrrigationHandler(SimpleHTTPRequestHandler):
             )
 
 
-def run(host: str = "127.0.0.1", port: int = 8000) -> None:
+def run(host: str = "0.0.0.0", port: int = None) -> None:
+    port = port or int(os.environ.get("PORT", 10000))
     server = ThreadingHTTPServer((host, port), SmartIrrigationHandler)
     print("=" * 72)
     print("Smart Irrigation web app is running")
-    print(f"Open http://{host}:{port} in your browser")
+    print(f"Open http://{host}:{port}")
     print("=" * 72)
     server.serve_forever()
-
 
 if __name__ == "__main__":
     run()
