@@ -1,0 +1,17 @@
+# Virtual environments
+.venv/
+venv/
+smart_irrigation_project/venv/
+
+# Python cache
+__pycache__/
+*.py[cod]
+
+# Tooling and local files
+.pytest_cache/
+.mypy_cache/
+.ipynb_checkpoints/
+
+# OS/editor noise
+.DS_Store
+Thumbs.db

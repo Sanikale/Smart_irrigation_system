@@ -1,0 +1,26 @@
+{
+  "best_model": "Random Forest",
+  "accuracy": 0.985,
+  "dataset_rows": 5000,
+  "feature_columns": [
+    "Crop_encoded",
+    "Soil_pH",
+    "Rainfall_mm",
+    "Temperature_C",
+    "Humidity_pct",
+    "Fertilizer_Used_kg",
+    "Pesticides_Used_kg",
+    "Planting_Density",
+    "Irrigation_encoded"
+  ],
+  "class_balance": {
+    "no_irrigation": 3030,
+    "irrigation_needed": 1970
+  },
+  "scores": {
+    "Random Forest": 0.985,
+    "Decision Tree": 0.972,
+    "Random Forest (Deep)": 0.981
+  },
+  "classification_report": "                   precision    recall  f1-score   support\n\n    No Irrigation       0.99      0.99      0.99       606\nIrrigation Needed       0.98      0.98      0.98       394\n\n         accuracy                           0.98      1000\n        macro avg       0.98      0.98      0.98      1000\n     weighted avg       0.98      0.98      0.98      1000\n"
+}

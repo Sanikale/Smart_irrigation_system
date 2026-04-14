@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Smart Irrigation System</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Sora:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <div class="page-shell">
+    <header class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow">Machine Learning Powered Agriculture</p>
+        <h1>Smart Irrigation Control Center</h1>
+        <p class="hero-text">
+          Predict irrigation needs from crop and climate conditions, inspect model performance,
+          and keep your project presentation-ready with a working web dashboard.
+        </p>
+        <div class="hero-actions">
+          <button id="train-model-btn" class="btn btn-primary">Train Model</button>
+          <button id="generate-data-btn" class="btn btn-secondary">Regenerate Dataset</button>
+        </div>
+      </div>
+      <div class="hero-card">
+        <div class="status-label">System Status</div>
+        <div id="health-status" class="status-pill">Checking model...</div>
+        <div id="model-name" class="metric-value">No trained model yet</div>
+        <div id="model-accuracy" class="metric-subtext">Train the model to see accuracy.</div>
+      </div>
+    </header>
+
+    <main class="dashboard-grid">
+      <section class="panel">
+        <div class="panel-heading">
+          <h2>Irrigation Prediction</h2>
+          <p>Enter field conditions and get an irrigation decision instantly.</p>
+        </div>
+        <form id="prediction-form" class="form-grid">
+          <label>
+            Crop
+            <select name="crop" required>
+              <option>Rice</option>
+              <option>Wheat</option>
+              <option>Maize</option>
+              <option>Barley</option>
+            </select>
+          </label>
+          <label>
+            Irrigation Type
+            <select name="irrigation_type" required>
+              <option>None</option>
+              <option>Drip</option>
+              <option>Flood</option>
+              <option>Sprinkler</option>
+            </select>
+          </label>
+          <label>
+            Soil pH
+            <input type="number" step="0.1" min="5.5" max="8.5" name="soil_ph" value="6.8" required>
+          </label>
+          <label>
+            Rainfall (mm)
+            <input type="number" step="0.1" min="0" name="rainfall_mm" value="120" required>
+          </label>
+          <label>
+            Temperature (C)
+            <input type="number" step="0.1" min="0" name="temperature_c" value="34" required>
+          </label>
+          <label>
+            Humidity (%)
+            <input type="number" step="0.1" min="0" max="100" name="humidity_pct" value="58" required>
+          </label>
+          <label>
+            Fertilizer Used (kg)
+            <input type="number" step="0.1" min="0" name="fertilizer_used_kg" value="100" required>
+          </label>
+          <label>
+            Pesticides Used (kg)
+            <input type="number" step="0.1" min="0" name="pesticides_used_kg" value="50" required>
+          </label>
+          <label class="full-width">
+            Planting Density
+            <input type="number" step="0.1" min="0" name="planting_density" value="200" required>
+          </label>
+          <button type="submit" class="btn btn-primary full-width">Predict Irrigation Need</button>
+        </form>
+        <div id="prediction-result" class="result-card hidden"></div>
+      </section>
+
+      <section class="panel">
+        <div class="panel-heading">
+          <h2>Dataset and Model Insights</h2>
+          <p>Useful for viva, demo, and project report discussions.</p>
+        </div>
+        <div class="stats-grid">
+          <article class="stat-box">
+            <span class="stat-label">Dataset Rows</span>
+            <span id="dataset-rows" class="stat-value">-</span>
+          </article>
+          <article class="stat-box">
+            <span class="stat-label">Avg Temperature</span>
+            <span id="avg-temperature" class="stat-value">-</span>
+          </article>
+          <article class="stat-box">
+            <span class="stat-label">Avg Rainfall</span>
+            <span id="avg-rainfall" class="stat-value">-</span>
+          </article>
+          <article class="stat-box">
+            <span class="stat-label">Irrigation Rate</span>
+            <span id="irrigation-rate" class="stat-value">-</span>
+          </article>
+        </div>
+        <div class="crop-breakdown">
+          <h3>Crop Distribution</h3>
+          <div id="crop-list" class="crop-list"></div>
+        </div>
+      </section>
+
+      <section class="panel wide-panel">
+        <div class="panel-heading">
+          <h2>Model Visualizations</h2>
+          <p>These charts refresh after training.</p>
+        </div>
+        <div class="visual-grid">
+          <figure class="visual-card">
+            <img id="confusion-matrix" alt="Confusion matrix">
+            <figcaption>Confusion Matrix</figcaption>
+          </figure>
+          <figure class="visual-card">
+            <img id="feature-importance" alt="Feature importance">
+            <figcaption>Feature Importance</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section class="panel wide-panel">
+        <div class="panel-heading">
+          <h2>Project Suggestions to Add Next</h2>
+          <p>These are strong improvements for your ML course submission.</p>
+        </div>
+        <div class="suggestion-list">
+          <article>
+            <h3>Real sensor input</h3>
+            <p>Connect live soil moisture, rainfall, and temperature values from IoT hardware or CSV upload.</p>
+          </article>
+          <article>
+            <h3>Water usage optimization</h3>
+            <p>Add estimated liters saved and irrigation scheduling recommendations instead of only yes/no output.</p>
+          </article>
+          <article>
+            <h3>Crop-specific dashboard</h3>
+            <p>Show separate thresholds, seasonal requirements, and insights for rice, wheat, maize, and barley.</p>
+          </article>
+          <article>
+            <h3>Model comparison report</h3>
+            <p>Display Random Forest vs Decision Tree metrics in the UI for a stronger academic presentation.</p>
+          </article>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="/app.js"></script>
+</body>
+</html>
